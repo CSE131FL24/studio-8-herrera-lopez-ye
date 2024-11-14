@@ -26,16 +26,26 @@ public class Quiz {
 	}
 	
 	public void takeQuiz() {
-		//FIXME
+		for (int i = 0; i < questions.length; i++)
+		{
+			questions[i].displayPrompt();
+			questions[i].checkAnswer(getUserAnswer());
+			System.out.println(questions[i].getPoints());
+			
+		}
+		System.out.println(getTotalPoints());
+		
 	}
 	
 	public static void main(String[] args) {
 		Question q = new Question("What number studio is this?", "8", 2);
 
 		String[] choices = {"seven", "nine", "eight", "six"};
+		
 		Question multipleChoice = new MultipleChoiceQuestion("What studio is this?", "3", 1, choices);
 
 		choices = new String[] {"instance variables", "git", "methods", "eclipse"};
+		
 		Question selectAll = new SelectAllQuestion("Select all of the following that can be found within a class:", "13", choices);
 
 		Question[] questions = {q, multipleChoice, selectAll}; //create and add more questions!
